@@ -13,8 +13,10 @@ export VERS_MDK=1.16.0
 export VERS_API=1.16.0
 export VERS_WORKER=1.16.0
 export VERS_PIWIND=1.16.0
+export VERS_GEM=1.8.0
 export VERS_UI=1.9.0
 GIT_PIWIND=OasisPiWind
+GIT_GEM=gem
 
 MSG=$(cat <<-END
 Do you want to install from a clean state, this is recomended when updating the release version.
@@ -58,6 +60,21 @@ else
 fi
 
 
+# --- Clone GEM ------------------------------------------------------------- #
+
+if [ -d $SCRIPT_DIR/$GIT_GEM ]; then
+    cd $SCRIPT_DIR/$GIT_GEM
+    git stash
+    git fetch && git checkout $VERS_GEM
+else
+    mkdir -p $SCRIPT_DIR/$GIT_GEM
+    cd $SCRIPT_DIR/$GIT_GEM
+    git clone --depth 1 --branch $VERS_GEM https://github.com/OasisLMF/$GIT_GEM.git .
+    git checkout $VERS_GEM
+fi
+
+## fetch GEM model data 
+make -C model_data/GMO/
 
 # --- RUN Oasis Platform & UI ----------------------------------------------- #
 
