@@ -74,6 +74,7 @@ else
 fi
 
 ## fetch GEM model data 
+cd $SCRIPT_DIR/$GIT_GEM
 make -C model_data/GMO/
 
 # --- RUN Oasis Platform & UI ----------------------------------------------- #
