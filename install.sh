@@ -12,7 +12,7 @@ fi
 export VERS_MDK=1.27.1
 export VERS_API=1.27.1
 export VERS_WORKER=1.27.1
-export VERS_PIWIND='backports/1.27.x'
+export VERS_PIWIND='backports/1.26.x'
 export VERS_UI=1.11.6
 GIT_PIWIND=OasisPiWind
 
